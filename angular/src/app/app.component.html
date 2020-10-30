@@ -1,0 +1,30 @@
+
+<div class="container">
+  <h1>Textual Analysis with Google Vision API</h1>
+  <mat-divider></mat-divider>
+  <h2>Enter a picture URL to analyze</h2>
+  <p>The Google Vision API will analyze this photo for text and print the translated text below.</p>
+  <mat-form-field class="url" appearance="outline" style="min-width: 400px;">
+    <mat-label>Enter Image URL</mat-label>
+    <input matInput name="url" [(ngModel)]="url">
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onAnalyze()" style="margin-left: 20px;">Analyze Image</button>
+  <mat-divider></mat-divider>
+
+  
+  <div class="flex-container">
+    <div *ngIf="analyzing" class="description">
+      <p>Analyzing image...</p>
+      <mat-spinner ></mat-spinner>
+    </div>
+    <div *ngIf="description" class="description">
+      <p ><strong>Google Vision found the following text in this image:</strong></p>
+      <p >{{ description }}</p>
+    </div>
+    
+    
+   
+    <img *ngIf="url" [src]="url" style="max-width: 600px;" class="image">
+    
+  </div>
+</div>
